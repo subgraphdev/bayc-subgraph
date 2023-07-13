@@ -1,0 +1,42 @@
+
+# By default, entities are mutable
+# meaning that mappings can load existing entities,
+#  modify them and store a new version of that entity.
+
+# Token is not immutable bacause , the Owner attribute 
+# is something that will change over the time
+
+# Entity attributes can scaler or vector
+# scalar  attributes can be Bytes, String,
+# Boolean,Int, BigInt,BigDecimal, enum etc
+
+type Token @entity {
+  id: ID! # Bytes or String, ID is synonymous to String!
+  tokenID: BigInt!
+  owner: User!
+  background: String!
+  mouth: String!
+  hat: String!
+  eyes: String!
+  fur: String!
+  clothes: String!
+  }
+
+  type User @entity {
+    id: ID!
+    tokens:[Token!]! @derivedFrom(field: "owner")
+}
+
+type _Schema_
+  @fulltext(
+    name: "tokenSearch"
+    language: en
+    algorithm: rank
+    include: [{
+      entity: "Token",
+      fields: [
+        { name: "eyes" }, { name: "background" }, { name: "hat" }, { name: "mouth" },
+        { name: "clothes" }, { name: "fur" }, { name: "earring" }, { name: "collection" }
+      ]
+    }]
+  )
