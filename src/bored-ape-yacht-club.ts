@@ -1,11 +1,18 @@
-import {
-  Transfer as TransferEvent
-} from "../generated/BoredApeYachtClub/BoredApeYachtClub"
 
+// import the Events class generated from the ABI
 import {
+  Transfer as TransferEvent,
+  BoredApeYachtClub
+} from "../generated/BoredApeYachtClub/BoredApeYachtClub";
+
+// import the Entities generated from GraphQL schema
+import {
+  Transfer,
   Token,
-  User
-} from "../generated/schema"
+  Property
+} from "../generated/schema";
+
+import { store,ethereum,ipfs,crypto,json,log } from "@graphprotocol/graph-ts";
 
 
 
@@ -17,6 +24,5 @@ import {
 
 export function handleTransfer(event: TransferEvent): void {
   
-
 }
   

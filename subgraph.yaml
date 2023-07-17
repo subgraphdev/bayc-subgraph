@@ -16,8 +16,9 @@ dataSources:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
-        - Token
-        - User
+        - Transfer
+        - Token 
+        - Property
       abis:
         - name: BoredApeYachtClub
           file: ./abis/BoredApeYachtClub.json

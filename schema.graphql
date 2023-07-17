@@ -10,33 +10,30 @@
 # scalar  attributes can be Bytes, String,
 # Boolean,Int, BigInt,BigDecimal, enum etc
 
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes!
+  to: Bytes!
+  tokenId: BigInt! 
+  blockNumber: BigInt!
+  transactionHash: Bytes!
+}
 type Token @entity {
-  id: ID! # Bytes or String, ID is synonymous to String!
-  tokenID: BigInt!
-  owner: User!
-  background: String!
-  mouth: String!
-  hat: String!
-  eyes: String!
-  fur: String!
-  clothes: String!
-  }
-
-  type User @entity {
-    id: ID!
-    tokens:[Token!]! @derivedFrom(field: "owner")
+  id: ID!
+  creator: Bytes!
+  newOwner: Bytes!
+  tokenURI: String!
+  blockNumber: BigInt!
 }
 
-type _Schema_
-  @fulltext(
-    name: "tokenSearch"
-    language: en
-    algorithm: rank
-    include: [{
-      entity: "Token",
-      fields: [
-        { name: "eyes" }, { name: "background" }, { name: "hat" }, { name: "mouth" },
-        { name: "clothes" }, { name: "fur" }, { name: "earring" }, { name: "collection" }
-      ]
-    }]
-  )
+type Property @entity {
+  id: ID!
+  image: String
+  background: String
+  clothes: String
+  earring: String
+  eyes: String
+  fur: String
+  hat: String
+  mouth: String
+}
