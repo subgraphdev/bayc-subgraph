@@ -1,24 +1,23 @@
-type Transfer @entity(immutable: true) {
+type Transfer @entity(immutable: true){
   id: Bytes!
   tokenId: BigInt!
   from: Bytes!
   to: Bytes!
   blockNumber: BigInt!
 }
-type Ape @entity {
+type Ape @entity{
   id: ID!
   tokenId: BigInt!
   tokenURI: String!
   owner: User!
 }
 
-type TokenMetadata @entity {
-  id: ID!
-  image: String!
-  backgroundColor: String!
-  earringColor: String!
-  furColor: String!
-}
+# type ApeMetadata @entity{
+#   id: ID!
+#   image: String!!
+#   externalURL: String!
+#   name: String!
+# }
 
 type User @entity {
   id: ID!

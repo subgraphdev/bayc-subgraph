@@ -2,7 +2,7 @@ specVersion: 0.0.5
 description: A subgraph for BAYC NFT token contract
 repository: https://github.com/subgraphdev/bayc-subgraph
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: BoredApeYachtClub
@@ -17,28 +17,25 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Transfer
-        - Ape 
-        - User 
+        - Ape
+        - User
       abis:
         - name: BoredApeYachtClub
-          file: ./abis/BoredApeYachtClub.json
+          file: BoredApeYachtClub\abis\BoredApeYachtClub.json
       eventHandlers:
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/bored-ape-yacht-club.ts
+      file: BoredApeYachtClub\BoredApeYachtClub.wasm
 templates:
-  - name: TokenMetadata
+  - name: ApeMetadata
     kind: file/ipfs
     mapping:
       apiVersion: 0.0.7
       language: wasm/assemblyscript
-      file: ./src/bored-ape-yacht-club.ts
+      file: BoredApeYachtClub\BoredApeYachtClub.wasm
       handler: handleMetadata
       entities:
-        - TokenMetadata
+        - ApeMetadata
       abis:
         - name: BoredApeYachtClub
-          file: ./abis/BoredApeYachtClub.json 
-             
-
-       
+          file: ApeMetadata\abis\BoredApeYachtClub.json
